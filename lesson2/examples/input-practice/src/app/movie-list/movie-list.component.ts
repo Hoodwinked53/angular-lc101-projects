@@ -12,4 +12,25 @@ export class MovieListComponent implements OnInit {
 
    ngOnInit() {
    }
+
+   // addMovie (newTitle: string) {
+   //    if(!this.movies.includes(newTitle)) {
+   //       this.movies.push(newTitle);
+   //    }
+   // }
+
+   addMovie (newTitle: string) {
+      let errorMsg = '';
+      if (newTitle === '') {
+         errorMsg = 'Please enter a movie title.';
+      } else if (this.movies.includes(newTitle)) {
+         errorMsg = `${newTitle} is already in your movie list.`;
+      } else {
+         this.movies.push(newTitle);
+      }
+      return errorMsg;
+   }
+
 }
+
+// Common practice to put constructor and functions like ngOnInit AFTER the vairable declarations but BEFORE any custom functions
